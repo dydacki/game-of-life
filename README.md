@@ -8,7 +8,7 @@ For the sake of presentation, the most basic pattern of the **Glider** was used.
 
 ## Running the application
 
-The application consists of two files: a html file that can be opened in a browser of choice and a javascript containing the logic of the animated canvas. In order to run it, the user needs to download both files to the chosen directory (both files should be in the same directory) and open the `index.html` file in the browser.
+The application consists of two files: a html file that can be opened in a browser of choice and a javascript file containing the logic of the animated canvas. In order to run it, the user needs to download both files to the chosen directory (both files should be in the same directory) and open the `index.html` file in the browser.
 
 The application contains two buttons:
 
