@@ -29,11 +29,11 @@ class Cell {
     }
 
     setNextLifeState() {
-        const aliveNeighbors = this.#_neighbours.filter(neighbourCell => neighbourCell.isAlive).length;
+        const aliveNeighbours = this.#_neighbours.filter(neighbourCell => neighbourCell.isAlive).length;
         if (this.#_isAlive) {
-            this.#_isAliveNext = aliveNeighbors === 2 || aliveNeighbors === 3;
+            this.#_isAliveNext = aliveNeighbours === 2 || aliveNeighbours === 3;
         } else {
-            this.#_isAliveNext = aliveNeighbors === 3;
+            this.#_isAliveNext = aliveNeighbours === 3;
         }
     }
 
