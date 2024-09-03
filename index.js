@@ -88,8 +88,9 @@ class Board {
     }
 
     print() {
-        let thisBoard = this.#_cells.map(row => row.map(cell => cell.isAlive ? 1 : 0));
-        thisBoard.forEach((row, i) => console.log(`${i}. ${row.join(' ')}`));
+        this.#_cells
+            .map(row => row.map(cell => cell.isAlive ? 1 : 0))
+            .forEach((row, i) => console.log(`${i}. ${row.join(' ')}`));
     };
 
     #addNeighbours() {
@@ -185,7 +186,7 @@ const initCanvas = () => {
     drawBoard(ctx);
 }
 
-const startScrolling = () => {
+const startAnimation = () => {
     let ctx = canvas.getContext('2d');
     interval = setInterval(() => {
         topPosition += 1;
@@ -206,25 +207,25 @@ const startScrolling = () => {
     }, 50);
 }
 
-const stopScrolling = () => {
+const stopAnimation = () => {
     clearInterval(interval);
 }
 
-const startStopScrolling = () => {
+const startStopAnimation = () => {
     play = !play;
     const button = document.getElementById('startStopButton');
     document.getElementById('resetButton').disabled = false;
     if (play) {
         button.innerHTML = 'Stop game';
-        startScrolling();
+        startAnimation();
     } else {
         button.innerHTML = 'Resume game';
-        stopScrolling();
+        stopAnimation();
     }
 }
 
-const reset = () => {
-    stopScrolling();
+const resetAnimation = () => {
+    stopAnimation();
     leftPosition = 0;
     topPosition = 0;
     iteration = 0;
