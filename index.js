@@ -70,11 +70,9 @@ class Board {
     shift() {
         let newCells = Array.from({ length: stageSize }, () => Array(stageSize).fill(null));
 
-        for (let i = 0; i < stageSize; i++) {
-            for (let j = 0; j < stageSize; j++) {
-                let newRow = i - 1 < 0 ? stageSize - 1 : i - 1;
-                let newCol = j - 1 < 0 ? stageSize - 1 : j - 1;
-                newCells[newRow][newCol] = this.#_cells[i][j];
+        for (let i = 1; i < stageSize; i++) {
+            for (let j = 1; j < stageSize; j++) {
+                newCells[i - 1][j - 1] = this.#_cells[i][j];
             }
         }
     
@@ -152,10 +150,12 @@ const drawGrid = (ctx) => {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     ctx.beginPath();
     for (var i = 0; i <= stageSize * tileSize; i+=tileSize) {
-        ctx.moveTo(i - leftPosition, 0);
-        ctx.lineTo(i - leftPosition, stageSize * tileSize);
-        ctx.moveTo(0, i - topPosition);
-        ctx.lineTo(stageSize * tileSize, i - topPosition);
+        if (i - leftPosition > 0 && i - topPosition > 0) {
+            ctx.moveTo(i - leftPosition, 0);
+            ctx.lineTo(i - leftPosition, stageSize * tileSize);
+            ctx.moveTo(0, i - topPosition);
+            ctx.lineTo(stageSize * tileSize, i - topPosition);
+        }
     }
     ctx.stroke();
 }
@@ -204,7 +204,7 @@ const startAnimation = () => {
             leftPosition = 0;
             topPosition = 0;
         }
-    }, 50);
+    }, 100);
 }
 
 const stopAnimation = () => {
